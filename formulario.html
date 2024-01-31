@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 300px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input,
+        select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Das0000003i2v"
+        method="POST">
+
+        <input type=hidden name="oid" value="00Das0000003i2v">
+        <input type=hidden name="retURL" value="https://juniorpj1.github.io/feedback.html">
+        <input type=hidden name="LeadSource" value="Site">
+
+        <label for="first_name">Primeiro Nome</label>
+        <input id="first_name" maxlength="40" name="first_name" size="20" type="text" />
+
+        <label for="last_name">Sobrenome</label>
+        <input id="last_name" maxlength="80" name="last_name" size="20" type="text" />
+
+        <label for="email">Email</label>
+        <input id="email" maxlength="80" name="email" size="20" type="text" />
+
+        <label for="company">Empresa</label>
+        <input id="company" maxlength="40" name="company" size="20" type="text" />
+
+        <label for="zip">CEP</label>
+        <input id="zip" maxlength="20" name="zip" size="20" type="text" />
+
+        <label for="00Nas00000024Z0">Tipo de Atendimento:</label>
+        <select id="00Nas00000024Z0" name="00Nas00000024Z0" title="Tipo de Atendimento">
+            <option value="">Nenhum</option>
+            <option value="Automotivo">Automotivo</option>
+            <option value="Residencial">Residencial</option>
+            <option value="Comercial">Comercial</option>
+            <option value="Industrial">Industrial</option>
+            <option value="Outros">Outros</option>
+        </select>
+
+        <input type="submit" name="submit">
+
+    </form>
+
+</body>
+
+</html>
