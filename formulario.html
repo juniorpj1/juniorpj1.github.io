@@ -39,31 +39,56 @@
             background-color: #45a049;
         }
     </style>
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById('first_name').value;
+            var lastName = document.getElementById('last_name').value;
+            var email = document.getElementById('email').value;
+            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+            if (firstName == "" || lastName == "") {
+                alert("Nome e sobrenome são obrigatórios.");
+                return false;
+            }
+
+            if (!email.match(emailRegex)) {
+                alert("Por favor, insira um email válido.");
+                return false;
+            }
+
+            return true;
+        }
+
+        function maskZip() {
+            var zip = document.getElementById('zip');
+            zip.value = zip.value.replace(/\D/g, "").replace(/^(\d{5})(\d)/, "$1-$2");
+        }
+    </script>
 </head>
 
 <body>
 
     <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Das0000003i2v"
-        method="POST">
+        method="POST" onsubmit="return validateForm()">
 
         <input type=hidden name="oid" value="00Das0000003i2v">
         <input type=hidden name="retURL" value="https://juniorpj1.github.io/feedback.html">
         <input type=hidden id="lead_source" name="lead_source" value="Site">
 
         <label for="first_name">Primeiro Nome</label>
-        <input id="first_name" maxlength="40" name="first_name" size="20" type="text" />
+        <input id="first_name" maxlength="40" name="first_name" size="20" type="text" required />
 
         <label for="last_name">Sobrenome</label>
-        <input id="last_name" maxlength="80" name="last_name" size="20" type="text" />
+        <input id="last_name" maxlength="80" name="last_name" size="20" type="text" required />
 
         <label for="email">Email</label>
-        <input id="email" maxlength="80" name="email" size="20" type="text" />
+        <input id="email" maxlength="80" name="email" size="20" type="text" required />
 
         <label for="company">Empresa</label>
         <input id="company" maxlength="40" name="company" size="20" type="text" />
 
         <label for="zip">CEP</label>
-        <input id="zip" maxlength="20" name="zip" size="20" type="text" />
+        <input id="zip" maxlength="20" name="zip" size="20" type="text" onkeyup="maskZip()" />
 
         <label for="00Nas00000024Z0">Tipo de Atendimento:</label>
         <select id="00Nas00000024Z0" name="00Nas00000024Z0" title="Tipo de Atendimento">
